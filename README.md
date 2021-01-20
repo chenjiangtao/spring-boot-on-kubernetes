@@ -2,6 +2,41 @@
 
  使用水平Pod自动缩放器和Kubernetes上的自定义指标自动缩放Spring Boot
 
+## 目录结构
+
+```bash
+├── doc
+├── kubernetes
+│   ├── deployment
+│   ├── ingrass
+│   ├── kong
+│   ├── monitoring
+│   │   ├── custom-metrics-api
+│   │   ├── kube-operators
+│   │   ├── kube-state-metrics
+│   │   ├── metrics-server
+│   │   ├── new
+│   │   ├── nfs-storage
+│   │   ├── prometheus
+│   │   ├── prometheus-node-exporter-sample
+│   │   └── prometheus-whole
+│   ├── mysql
+│   └── redis
+│       └── helm
+└── src
+├── main
+│   ├── java
+│   │   └── com
+│   │       └── learnk8s
+│   │           └── app
+│   │               ├── controller
+│   │               ├── model
+│   │               └── queue
+│   └── resources
+│       ├── static
+│       └── templates
+```
+
 ## Prerequisites
 
 You should have minikube installed.
