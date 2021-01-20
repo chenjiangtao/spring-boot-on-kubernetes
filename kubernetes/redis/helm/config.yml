@@ -1,0 +1,8 @@
+exporter:
+  serviceMonitor:
+    namespace: dev
+
+haproxy:
+  metrics:
+    serviceMonitor:
+      namespace: dev

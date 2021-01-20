@@ -1,0 +1,90 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: "8080"
+        prometheus.io/path: /actuator/prometheus
+    spec:
+      containers:
+      - name: backend
+        image: spring-boot-hpa
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: ACTIVEMQ_BROKER_URL
+          value: "tcp://queue:61616"
+        - name: STORE_ENABLED
+          value: "false"
+        - name: WORKER_ENABLED
+          value: "true"
+        ports:
+          - containerPort: 8080
+        readinessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          httpGet:
+            path: /health
+            port: 8080
+        resources:
+          limits:
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  labels:
+    app: backend
+    spring-boot: "true"
+spec:
+  ports:
+  - name: high
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: low
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: backend
+  sessionAffinity: None
+  type: ClusterIP
+
+
+---
+apiVersion: configuration.konghq.com/v1
+kind: KongIngress
+metadata:
+  name: kong-backend-config
+route:
+  methods:
+    - GET
+  strip_path: false
+---
+apiVersion: extensions/v1
+kind: Ingress
+metadata:
+  name: backend-ingress
+  annotations:
+    kubernetes.io/ingress.class: kong
+    configuration.konghq.com: kong-backend-config
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: backend
+              servicePort: 80

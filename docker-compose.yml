@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+   web:
+     build: .
+     environment:
+       ACTIVEMQ_BROKER_URL: tcp://activemq:61616
+     depends_on:
+       - activemq
+     ports:
+       - "8080:8080"
+
+   activemq:
+     image: webcenter/activemq:5.14.3

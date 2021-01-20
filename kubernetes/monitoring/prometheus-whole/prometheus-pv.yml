@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: prometheus-pv
+#  labels:
+#    type: local
+spec:
+  storageClassName: prometheus-storage
+  capacity:
+    storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
+#  hostPath: # hostPath类型，会直接创建path 与 local类型 不同
+#    path: "/data/prometheus"
+  local: # local类型
+    path: /data/prometheus  # 节点上的具体路径
+  nodeAffinity: # 这里就设置了节点亲和
+    required:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/hostname
+              operator: In
+              values:
+                - minikube  # 这里我们使用minikube节点，该节点有/data/vol1路径
+

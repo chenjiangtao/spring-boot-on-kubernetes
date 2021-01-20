@@ -1,0 +1,44 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: alertmanager
+  namespace: monitoring
+data:
+  config.yml: |-
+    global:
+      smtp_smarthost: 'smtp-relay.gmail.com:587'
+      smtp_from: 'devopsdev <DevopsDev@bluebird.id>'
+      smtp_require_tls: true
+      smtp_hello: 'devopsdev'
+      smtp_auth_username: ''
+      smtp_auth_password: ''
+
+    templates:
+    - '/etc/alertmanager-templates/*.tmpl'
+    route:
+      group_by: ['alertname', 'cluster', 'service']
+      group_wait: 10s
+      group_interval: 1m
+      repeat_interval: 5m  
+      receiver: default 
+      routes:
+      - match:
+          team: devops
+        receiver: devops
+        continue: true 
+      - match: 
+          team: dev
+        receiver: dev
+        continue: true
+
+    receivers:
+    - name: 'default'
+
+    - name: 'devops'
+      email_configs:
+      - to: 'herry.purnama@bluebirdgroup.com, febry.rizky@bluebirdgroup.com, wiwit.aryadi@bluebirdgroup.com'
+
+    - name: 'dev'
+      email_configs:
+      - to: 'herry.purnama@bluebirdgroup.com, febry.rizky@bluebirdgroup.com, wiwit.aryadi@bluebirdgroup.com'

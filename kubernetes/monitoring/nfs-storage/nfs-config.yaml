@@ -1,0 +1,15 @@
+persistence:
+  ##开启持久存储
+  enabled: true
+  storageClass: "-"
+  ## 存储大小30g
+  size: 50Gi
+
+storageClass:
+  ##设置成默认storageclassclass
+  defaultClass: true
+
+nodeSelector:
+  ##安装到哪个node上
+  kubernetes.io/hostname: starbucks-bigdata3
+

@@ -1,0 +1,60 @@
+# rbac.yaml:#唯一需要修改的地方只有namespace,根据实际情况定义
+apiVersion: v1
+kind: ServiceAccount #  创建一个账户，主要用来管理NFS provisioner在k8s集群中运行的权限
+metadata:
+  name: storage-provisioner
+  namespace: kube-system
+---
+kind: ClusterRole # 创建集群角色
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: storage-provisioner-runner # 角色名
+rules: # 角色权限
+  - apiGroups: [""]
+    resources: ["persistentvolumes"] # 操作的资源
+    verbs: ["get", "list", "watch", "create", "delete"] # 对该资源的操作权限
+  - apiGroups: [""]
+    resources: ["persistentvolumeclaims"]
+    verbs: ["get", "list", "watch", "update"]
+  - apiGroups: ["storage.k8s.io"]
+    resources: ["storageclasses"]
+    verbs: ["get", "list", "watch"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "update", "patch"]
+---
+kind: ClusterRoleBinding # 集群角色绑定
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: run-storage-provisioner
+subjects: # 角色绑定对象
+  - kind: ServiceAccount
+    name: storage-provisioner
+    namespace: kube-system
+roleRef:
+  kind: ClusterRole # 哪个角色
+  name: storage-provisioner-runner
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: Role # 创建角色
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: leader-locking-storage-provisioner # 角色名
+  namespace: kube-system # Role需要指定名称空间，ClusterRole 不需要
+rules: # 角色权限
+  - apiGroups: [""]
+    resources: ["endpoints"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]
+---
+kind: RoleBinding # 角色绑定
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: leader-locking-storage-provisioner
+subjects: # 角色绑定对象
+  - kind: ServiceAccount
+    name: storage-provisioner
+    namespace: kube-system
+roleRef: # 绑定哪个角色
+  kind: Role
+  name: leader-locking-storage-provisioner
+  apiGroup: rbac.authorization.k8s.io

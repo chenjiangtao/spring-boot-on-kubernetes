@@ -1,0 +1,90 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test
+  template:
+    metadata:
+      labels:
+        app: test
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: "8080"
+        prometheus.io/path: /actuator/prometheus
+    spec:
+      containers:
+      - name: test
+        image: spring-boot-hpa
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: ACTIVEMQ_BROKER_URL
+          value: "tcp://queue:61616"
+        - name: STORE_ENABLED
+          value: "false"
+        - name: WORKER_ENABLED
+          value: "true"
+        ports:
+          - containerPort: 8080
+        readinessProbe:
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          httpGet:
+            path: /health
+            port: 8080
+        resources:
+          limits:
+            memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test
+spec:
+  ports:
+  - name: high
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: low
+    port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: test
+  sessionAffinity: None
+  type: ClusterIP
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: cafe-ingress-with-annotations
+  annotations:
+    nginx.org/proxy-connect-timeout: "30s"
+    nginx.org/proxy-read-timeout: "20s"
+    nginx.org/client-max-body-size: "4m"
+    nginx.org/server-snippets: |
+      location / {
+        return 302 /coffee;
+      }
+spec:
+  rules:
+    - host: cafe.example.com
+     - http:
+        paths:
+          - path: /tea
+            backend:
+              service:
+                name: test
+                port:
+                  number: 80
+#          - path: /coffee
+#            backend:
+#              serviceName: coffee-svc
+#              servicePort: 80
+
