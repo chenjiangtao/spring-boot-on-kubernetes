@@ -11,9 +11,9 @@
 #EXPOSE 8080
 #ENV STORE_ENABLED=true
 #ENV WORKER_ENABLED=true
-#COPY --from=build /app/target/spring-boot-k8s-hpa-0.0.1-SNAPSHOT.jar /app
+#COPY --from=build target/*.jar /app.jar
 #
-#CMD ["java", "-jar", "spring-boot-k8s-hpa-0.0.1-SNAPSHOT.jar"]
+#CMD ["java", "-jar", "app.jar"]
 
 
 FROM openjdk:10.0.1-10-jre-slim

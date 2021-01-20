@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.learnk8s</groupId>
-    <artifactId>spring-boot-k8s-hpa</artifactId>
+    <artifactId>spring-boot-on-kubernetes</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>spring-boot-k8s-hpa</name>
+    <name>spring-boot-on-kubernetes</name>
     <description>Demo project for Spring Boot and Kubernetes</description>
 
     <parent>
