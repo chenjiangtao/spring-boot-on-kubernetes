@@ -2,6 +2,10 @@
 
  使用水平Pod自动缩放器和Kubernetes上的自定义指标自动缩放Spring Boot
 
+目录：
+
+<a href="#Jasypt">Jasypt tools</a>
+
 ## 目录结构
 
 ```bash
@@ -163,7 +167,8 @@ kubectl get hpa spring-boot-hpa
 ```
 
 
-## Jasypt tools
+## <a name="Jasypt">Jasypt tools</a>
+
 生成Jasypt密码
 密码使用参考：
 
