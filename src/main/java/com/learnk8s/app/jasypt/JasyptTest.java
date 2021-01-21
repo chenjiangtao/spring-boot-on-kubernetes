@@ -6,7 +6,7 @@ public class JasyptTest {
     public static void main(String[] args) {
         BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
         //加密所需的salt(盐)
-        textEncryptor.setPassword("xlgPPrpsT6mxIwZ");
+        textEncryptor.setPassword("8gKZNS6GwpJ2vgq");
         //要加密的数据（数据库的用户名或密码）
         String username = textEncryptor.encrypt("test");
         String password = textEncryptor.encrypt("test");
