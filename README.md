@@ -162,6 +162,14 @@ You can inspect the event and triggers in the HPA with:
 kubectl get hpa spring-boot-hpa
 ```
 
+
+## Jasypt tools
+生成Jasypt密码
+密码使用参考：
+
+
+
+
 ## Notes
 
 The configuration for metrics and metrics server is configured to run on minikube only.
