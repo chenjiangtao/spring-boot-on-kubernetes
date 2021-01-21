@@ -13,6 +13,4 @@ public class JasyptTest {
         System.out.println("username:ENC("+username+")");
         System.out.println("password:ENC("+password+")");
     }
-
-
 }

@@ -3,8 +3,7 @@
  使用水平Pod自动缩放器和Kubernetes上的自定义指标自动缩放Spring Boot
 
 目录：
-
-<a href="#Jasypt">Jasypt tools</a>
+- <a href="#Jasypt">Jasypt tools</a>
 
 ## 目录结构
 
@@ -169,10 +168,25 @@ kubectl get hpa spring-boot-hpa
 
 ## <a name="Jasypt">Jasypt tools</a>
 
+`src/main/java/com/learnk8s/app/jasypt/JasyptTest.java`
+
 生成Jasypt密码
-密码使用参考：
-
-
+```java
+public class JasyptTest {
+    public static void main(String[] args) {
+        BasicTextEncryptor textEncryptor = new BasicTextEncryptor();
+        //加密所需的salt(盐)
+        textEncryptor.setPassword("xlgPPrpsT6mxIwZ");
+        //要加密的数据（数据库的用户名或密码）
+        String username = textEncryptor.encrypt("test");
+        String password = textEncryptor.encrypt("test");
+        System.out.println("username:ENC("+username+")");
+        System.out.println("password:ENC("+password+")");
+    }
+}
+```
+>密码使用参考：[Spring boot 使用Jasypt加密用户名密码
+](https://blog.csdn.net/evane1890/article/details/112967867)
 
 
 ## Notes
