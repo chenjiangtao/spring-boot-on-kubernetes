@@ -4,7 +4,6 @@ import com.learnk8s.app.queue.QueueService;
 import org.apache.activemq.command.ActiveMQTextMessage;
 import org.apache.activemq.junit.EmbeddedActiveMQBroker;
 import org.junit.Before;
-import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,7 +15,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringBootApplicationTests {
+public class SpringBootK8SApplicationTests {
 
     private static final String QUEUE_NAME = "testQueue";
 
