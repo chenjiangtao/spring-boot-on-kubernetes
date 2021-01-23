@@ -203,3 +203,7 @@ If you wish to run metrics and custom metrics server in production, you should c
 
 - [Metrics server](https://github.com/kubernetes-sigs/metrics-server)
 - [How to install Prometheus and the Promtheus Adapter](https://github.com/DirectXMan12/k8s-prometheus-adapter/blob/master/docs/walkthrough.md)
+
+# 欢迎加入QQ群,在线答疑
+
+![QQ群](\./doc/img.png)
