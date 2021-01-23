@@ -206,4 +206,4 @@ If you wish to run metrics and custom metrics server in production, you should c
 
 # 欢迎加入QQ群,在线答疑
 
-![QQ群](\./doc/img.png)
+![QQ群](\./doc/qq_group.png)
