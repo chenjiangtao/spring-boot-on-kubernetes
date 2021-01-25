@@ -6,14 +6,20 @@ metrics-server-v0.4.0.yaml 未测试
 
 # kubernetes-dashboard
 kube-dashboard-v2.0.yaml 可运行
-- 启用
+### 启用
 ```bash
 kubectl proxy
 ```
-- 运行
+### 运行
 ```bash
 http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/node?namespace=default
 ```
+
+### 获取token
+```shell
+kubectl get secret $(kubectl get serviceaccount dashboard -o jsonpath="{.secrets[0].name}") -o jsonpath="{.data.token}" | base64 --decode
+```
+
 
 kube-dashboard-v2.0-self-certs.yaml 使用创建证书的方式运行
 运行时注意：
