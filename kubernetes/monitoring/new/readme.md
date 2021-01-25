@@ -4,7 +4,17 @@ metrics-server-3.6.yaml 可直接运行
 metrics-server-eipwork-v3.7.yaml  可直接运行
 metrics-server-v0.4.0.yaml 未测试
 
+# kubernetes-dashboard
 kube-dashboard-v2.0.yaml 可运行
+- 启用
+```bash
+kubectl proxy
+```
+- 运行
+```bash
+http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/node?namespace=default
+```
+
 kube-dashboard-v2.0-self-certs.yaml 使用创建证书的方式运行
 运行时注意：
 
