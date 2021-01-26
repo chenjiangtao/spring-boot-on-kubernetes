@@ -1,3 +1,6 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/3754a79b22b9430040ba/maintainability)](https://codeclimate.com/github/chenjiangtao/spring-boot-on-kubernetes)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/3754a79b22b9430040ba/test_coverage)](https://codeclimate.com/github/chenjiangtao/spring-boot-on-kubernetes)
+
 # spring-boot-on-kubernetes
 
  使用水平Pod自动缩放器和Kubernetes上的自定义指标自动缩放Spring Boot
