@@ -193,8 +193,8 @@ spec:
             - containerPort: 8443
               protocol: TCP
           args:
-            - --tls-cert-file=/root/certs/new-for-dashboard/dashboard.crt
-            - --tls-key-file=/root/certs/new-for-dashboard/dashboard.key
+            - --tls-cert-file=/root/certs/dashboard.crt
+            - --tls-key-file=/root/certs/dashboard.key
             - --auto-generate-certificates
             - --namespace=kubernetes-dashboard
             # Uncomment the following line to manually specify Kubernetes API server Host
