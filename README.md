@@ -1,5 +1,6 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/3754a79b22b9430040ba/maintainability)](https://codeclimate.com/github/chenjiangtao/spring-boot-on-kubernetes)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/3754a79b22b9430040ba/test_coverage)](https://codeclimate.com/github/chenjiangtao/spring-boot-on-kubernetes)
+[![Travis-ci](https://www.travis-ci.com/chenjiangtao/spring-boot-on-kubernetes.svg?branch=main)](https://www.travis-ci.com/chenjiangtao/spring-boot-on-kubernetes.svg?branch=main)
 
 
 # spring-boot-on-kubernetes
