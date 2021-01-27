@@ -191,6 +191,15 @@ public class JasyptTest {
 >密码使用参考：[Spring boot 使用Jasypt加密用户名密码
 ](https://blog.csdn.net/evane1890/article/details/112967867)
 
+# travis 使用
+travis 依赖`mvnwn`本地命令文件
+
+注意`mvnw`文件使用，依赖`.mvn`文件夹中的文件；使用和`mvn`命令一样
+```shell
+./mvnw clean package -DskipTests
+```
+
+
 
 ## Notes
 
