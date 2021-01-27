@@ -1,3 +1,6 @@
+env:
+  global:
+    - CC_TEST_REPORTER_ID=c34ab41ee3140496929720088f1149fa032a749872c8695aecbb24aeb5d3a265
 language: java
 script:
 - make mvn-package
