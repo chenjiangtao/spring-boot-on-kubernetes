@@ -8,6 +8,7 @@
         <version>2.4.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.learnk8s</groupId>
     <artifactId>spring-boot-on-kubernetes</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -99,6 +100,11 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.8.0</version>
+        </dependency>
 
     </dependencies>
 
