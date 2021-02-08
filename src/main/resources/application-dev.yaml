@@ -1,5 +1,6 @@
 server:
   address: 0.0.0.0
+  port: 8081
 activemq:
   brokerUrl: ${ACTIVEMQ_BROKER_URL:vm://localhost:61616}
 queue:
@@ -21,7 +22,10 @@ management:
     web:
       exposure:
         include: '*'
+        exclude: env,beans
   metrics:
     export:
       prometheus:
         enabled: true
+#  server:
+#    port: 8081

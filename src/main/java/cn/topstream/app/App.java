@@ -12,7 +12,7 @@ import org.springframework.jms.config.SimpleJmsListenerEndpoint;
 
 @EnableJms
 @SpringBootApplication
-public class SpringBootK8SApplication implements JmsListenerConfigurer {
+public class App implements JmsListenerConfigurer {
     @Value("${queue.name}")
     private String queueName;
 
@@ -26,7 +26,7 @@ public class SpringBootK8SApplication implements JmsListenerConfigurer {
     private QueueService queueService;
 
 	public static void main(String[] args) {
-        SpringApplication.run(SpringBootK8SApplication.class, args);
+        SpringApplication.run(App.class, args);
 	}
 
     @Override

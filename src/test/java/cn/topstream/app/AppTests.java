@@ -15,7 +15,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class SpringBootK8SApplicationTests {
+public class AppTests {
 
     private static final String QUEUE_NAME = "testQueue";
 
