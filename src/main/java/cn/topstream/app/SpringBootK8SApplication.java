@@ -1,6 +1,6 @@
-package com.learnk8s.app;
+package cn.topstream.app;
 
-import com.learnk8s.app.queue.QueueService;
+import cn.topstream.app.queue.QueueService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;

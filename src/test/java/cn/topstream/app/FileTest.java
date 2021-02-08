@@ -1,4 +1,4 @@
-package com.learnk8s.app;
+package cn.topstream.app;
 
 
 import org.junit.jupiter.api.Test;

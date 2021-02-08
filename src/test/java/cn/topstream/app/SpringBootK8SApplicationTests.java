@@ -1,6 +1,6 @@
-package com.learnk8s.app;
+package cn.topstream.app;
 
-import com.learnk8s.app.queue.QueueService;
+import cn.topstream.app.queue.QueueService;
 import org.apache.activemq.command.ActiveMQTextMessage;
 import org.apache.activemq.junit.EmbeddedActiveMQBroker;
 import org.junit.Before;

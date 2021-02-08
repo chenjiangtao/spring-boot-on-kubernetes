@@ -1,4 +1,4 @@
-package com.learnk8s.app.model;
+package cn.topstream.app.model;
 
 public class Ticket {
     private long quantity;

@@ -1,4 +1,4 @@
-package com.learnk8s.app.jasypt;
+package cn.topstream.app.jasypt;
 
 import org.jasypt.util.text.BasicTextEncryptor;
 

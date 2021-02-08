@@ -1,27 +1,3 @@
-server:
-  address: 0.0.0.0
-activemq:
-  brokerUrl: ${ACTIVEMQ_BROKER_URL:vm://localhost:61616}
-queue:
-  name: ${QUEUE_NAME:mainQueue}
-worker:
-  name: ${HOSTNAME:worker1}
-  enabled: ${WORKER_ENABLED:true}
-store:
-  enabled: ${STORE_ENABLED:true}
-
-#监控
-management:
-  endpoint:
-    metrics:
-      enabled: true
-    prometheus:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: '*'
-  metrics:
-    export:
-      prometheus:
-        enabled: true
+spring:
+  profiles:
+    active: ${APP_ENV:dev}

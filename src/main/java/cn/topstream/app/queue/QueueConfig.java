@@ -1,4 +1,4 @@
-package com.learnk8s.app.queue;
+package cn.topstream.app.queue;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.springframework.beans.factory.annotation.Value;

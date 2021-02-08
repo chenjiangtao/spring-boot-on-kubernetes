@@ -697,8 +697,10 @@ spec:
                 fieldRef:
                   apiVersion: v1
                   fieldPath: metadata.namespace
-          image: kong-docker-kubernetes-ingress-controller.bintray.io/kong-ingress-controller:latest
+#          image: kong-docker-kubernetes-ingress-controller.bintray.io/kong-ingress-controller:latest
+          image: bitnami/kong-ingress-controller:1.1.0
           imagePullPolicy: IfNotPresent
+          command: [ "/bin/bash", "-ce", "tail -f /dev/null" ]
           livenessProbe:
             failureThreshold: 3
             httpGet:
