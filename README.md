@@ -203,6 +203,11 @@ travis 依赖`mvnwn`本地命令文件
 
 
 
+## spring boot监控
+健康指标：http://localhost:8090/actuator/health
+
+
+
 ## Notes
 
 The configuration for metrics and metrics server is configured to run on minikube only.
@@ -217,6 +222,11 @@ If you wish to run metrics and custom metrics server in production, you should c
 
 - [Metrics server](https://github.com/kubernetes-sigs/metrics-server)
 - [How to install Prometheus and the Promtheus Adapter](https://github.com/DirectXMan12/k8s-prometheus-adapter/blob/master/docs/walkthrough.md)
+
+
+
+
+
 
 ## 欢迎加入QQ群,在线答疑
 
