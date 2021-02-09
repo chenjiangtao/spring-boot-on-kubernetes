@@ -98,5 +98,19 @@ k create -f filebeat.yaml
 
 ## dashboard look
 
-
+## busybox测试
+```shell
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Pod
+metadata:
+  name: counter
+spec:
+  containers:
+  - name: count
+    image: busybox
+    args: [/bin/sh, -c,
+            'i=0; while true; do echo "hello world: $i: $(date)"; i=$((i+1)); sleep 3; done']
+EOF        
+```
 
