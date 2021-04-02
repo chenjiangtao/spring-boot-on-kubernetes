@@ -224,6 +224,20 @@ If you wish to run metrics and custom metrics server in production, you should c
 - [How to install Prometheus and the Promtheus Adapter](https://github.com/DirectXMan12/k8s-prometheus-adapter/blob/master/docs/walkthrough.md)
 
 
+# utils包里有各种小工具
+
+# tips
+- 如果idea 提交代码到github出现443，在项目根目录执行：
+```shell
+git config --global --unset http.proxy
+```
+
+
+
+
+
+
+
 
 
 
