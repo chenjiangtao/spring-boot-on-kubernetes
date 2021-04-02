@@ -20,7 +20,7 @@ import java.util.Properties;
 /**
  * @author Jason Chen
  */
-@Component
+//@Component
 public class SendEmail {
     //基础配置
     private static String mailFrom = null;// 指明邮件的发件人

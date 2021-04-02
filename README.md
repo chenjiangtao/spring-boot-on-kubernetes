@@ -10,7 +10,14 @@
 目录：
 - <a href="#Jasypt">Jasypt tools</a>
 
-## 目录结构
+## 组件说明
+ts-sbk-app      启动入口
+
+ts-sbk-common   公共包
+
+ts-sbk-data     数据库相关
+
+## 目录结构˚
 
 ```bash
 ├── doc
