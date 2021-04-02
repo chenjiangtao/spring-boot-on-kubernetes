@@ -1,0 +1,2 @@
+注意多数据源配置：
+SpringJdbcAutoConfig

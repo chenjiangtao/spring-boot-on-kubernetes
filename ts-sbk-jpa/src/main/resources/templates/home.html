@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+      layout:decorator="layout.html">
+
+<table>
+    <thead>
+    <tr>
+        <th> className</th>
+        <th> status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${configs.empty}">
+        <td colspan="2"> No configs Available</td>
+    </tr>
+    <tr th:each="config : ${configs}">
+        <td><span th:text="${config.className}"> className </span></td>
+        <td><span th:text="${config.status}"> status </span></td>
+    </tr>
+    </tbody>
+</table>
+
+</html>
+

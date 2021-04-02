@@ -7,6 +7,9 @@
         <module>ts-sbk-app</module>
         <module>ts-sbk-data</module>
         <module>ts-sbk-common</module>
+        <module>ts-sbk-service</module>
+        <module>ts-sbk-jpa</module>
+        <module>jpa-data</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
