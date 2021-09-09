@@ -8,7 +8,7 @@ source .bash_profile
 
 ## 安装集群
 ```shell
-tiup cluster deploy tidb-dev v4.0.6 ./topology.yaml -i ~/.ssh/id_rsa --user root
+tiup cluster deploy tidb-stg v4.0.6 ./topology.yaml -i ~/.ssh/id_rsa --user root
 ```
 或使用install.sh
 ```shell

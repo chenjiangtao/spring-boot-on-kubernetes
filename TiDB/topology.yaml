@@ -1,7 +1,7 @@
 # # Global variables are applied to all deployments and used as the default value of
 # # the deployments if a specific deployment value is missing.
 global:
-  user: "root"
+  user: "upp"
   ssh_port: 22
   deploy_dir: "/data/tidb/tidb-deploy"
   data_dir: "/data/tidb/tidb-data"
@@ -12,26 +12,28 @@ server_configs:
   # lease: "45s"
   # split-table: true
     token-limit: 50000
+  tikv:
+    log-level: warn
 
 pd_servers:
-  - host: 192.168.88.200
-  - host: 192.168.88.204
+  - host: 10.92.199.37
+  - host: 10.92.199.38
 
 tidb_servers:
-  - host: 192.168.88.200
-  - host: 192.168.88.201
-  - host: 192.168.88.204
+  - host: 10.92.199.39
+  - host: 10.92.199.40
+  - host: 10.92.199.41
 
 tikv_servers:
-  - host: 192.168.88.201
-  - host: 192.168.88.200
-  - host: 192.168.88.204
+  - host: 10.92.199.39
+  - host: 10.92.199.40
+  - host: 10.92.199.41
 
 monitoring_servers:
-  - host: 192.168.88.204
+  - host: 10.92.199.37
 
 grafana_servers:
-  - host: 192.168.88.204
+  - host: 10.92.199.37
 
 alertmanager_servers:
-  - host: 192.168.88.204
+  - host: 10.92.199.37
