@@ -7,4 +7,12 @@ spec:
   - name: count
     image: busybox
     args: [/bin/sh, -c,
-            'i=0; while true; do echo "hello world: $i: $(date)"; i=$((i+1)); sleep 3; done']
+            'i=0; while true; do echo "hello world: $i: $(date)"; i=$((i+1)); sleep 10; done']
+    volumeMounts:
+      - mountPath: /etc/localtime
+        name: timezone
+  volumes:
+    - name: timezone
+      hostPath:
+        path: /usr/share/zoneinfo/Asia/Shanghai
+

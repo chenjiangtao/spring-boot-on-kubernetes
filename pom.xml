@@ -2,6 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>ts-sbk-app</module>
+        <module>ts-sbk-data</module>
+        <module>ts-sbk-common</module>
+        <module>ts-sbk-service</module>
+        <module>ts-sbk-jpa</module>
+        <module>jpa-data</module>
+    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -9,7 +18,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>com.learnk8s</groupId>
+    <groupId>cn.topstream</groupId>
     <artifactId>spring-boot-on-kubernetes</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>spring-boot-on-kubernetes</name>
@@ -23,19 +32,18 @@
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
         <spring-boot.version>2.4.2</spring-boot.version>
     </properties>
-
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
+        <!--    Used when custom tags in properties-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
-            <version>${spring-boot.version}</version>
+            <version>${spring-boot.version}</version> <!--end-->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -76,9 +84,12 @@
             <artifactId>activemq-kahadb-store</artifactId>
             <scope>runtime</scope>
         </dependency>
-
-
-        <!--        prometheus监控-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!--prometheus监控-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -92,48 +103,85 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
-        <!--        promethues监控 end-->
-
+        <!--promethues监控 end-->
+        <!--aliyun files managament-->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.8.0</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
 
+
+        <!-- for   BigDecimalUtils-->
         <dependency>
-            <groupId>com.aliyun.oss</groupId>
-            <artifactId>aliyun-sdk-oss</artifactId>
-            <version>3.8.0</version>
+            <groupId>org.checkerframework</groupId>
+            <artifactId>checker-qual</artifactId>
+            <version>3.5.0</version>
+        </dependency> <!--end-->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.12</version>
         </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>1.62</version>
+        </dependency>
+        <dependency>
+            <groupId>net.lingala.zip4j</groupId>
+            <artifactId>zip4j</artifactId>
+            <version>2.2.8</version>
+        </dependency>
+        <!--      for  QRAnalysis class-->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version><!--    end-->
+        </dependency>
+        <!--for DateFormatUtils class-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.9</version>
+        </dependency><!--  end   -->
+        <!--   file operation-->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>4.1.0</version>
+        </dependency>
+        <!--for FileUtil ，IdUtils class blow-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.4.7</version>
+        </dependency><!--    end  -->
+        <!--mail -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+        </dependency><!--end-->
 
     </dependencies>
 
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-
-<!--            <plugin>-->
-<!--                <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                <version>3.7.0</version>-->
-<!--                <configuration>-->
-<!--                    <compilerArgs>-->
-<!--                        <arg>&#45;&#45;add-modules</arg>-->
-<!--                        <arg>java.xml.bind</arg>-->
-<!--                    </compilerArgs>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-        </plugins>
-    </build>
-
-        <repositories>
-            <repository>
-                <id>aliyun mave</id>
-                <name>aliyun maven</name>
-                <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            </repository>
-        </repositories>
+    <repositories>
+        <repository>
+            <id>aliyun mave</id>
+            <name>aliyun maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
 </project>
