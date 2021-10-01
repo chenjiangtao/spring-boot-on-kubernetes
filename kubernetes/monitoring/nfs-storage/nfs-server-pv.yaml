@@ -13,5 +13,5 @@ spec:
   claimRef:
     namespace: default
     ## 自动生成的pvc名字
-    name: data-storageclass-nfs-nfs-server-provisioner-0
+    name: data-nfs-server-provisioner-0
 
